@@ -1,0 +1,44 @@
+<!doctype>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/friends.css' %}" media="screen" title="no title" charset="utf-8">
+    </head>
+    <body>
+    	<div>
+    		<h3>Register here</h3>
+            <ul>
+    		<form action="/register" method="POST">
+    			{% csrf_token %}
+    			<li><input type="text" name="name" placeholder="name"></li>
+    			<li><input type="text" name="alias" placeholder="alias"></li>
+    			<li><input type="text" name="email" placeholder="email"></li>
+    			<li><input type="password" name="password" placeholder="password"></li>
+    			<li><input type="password" name="password2" placeholder="confirm password"></li>
+                <li><input type="date" name="dob" placeholder="1900-01-01"></li>
+    			<li><input type="submit"></li>
+    		</form>
+            </ul>
+    	</div>
+    	<div>
+    		<h3>Login here</h3>
+            <ul>
+    		<form action="/login" method="POST">
+    			{% csrf_token %}
+    			<li><input type="text" name="log_email" placeholder="email"></li>
+    			<li><input type="password" name="log_password" placeholder="password"></li>
+    			<li><button id="submit">Log in</button></li>
+    		</form>
+            </ul>
+    	</div>
+    	<div>
+    		{% if messages %}
+    		{% for message in messages %}
+    		<p>{{message}}</p>
+    		{% endfor %}
+    		{% endif %}
+    	</div>
+    </body>
+</html>

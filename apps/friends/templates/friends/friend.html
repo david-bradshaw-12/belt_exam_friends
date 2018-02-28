@@ -1,0 +1,30 @@
+<!doctype>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/friends.css' %}" media="screen" title="no title" charset="utf-8">
+    </head>
+    <body>
+    	<div>
+    		<p>Name: {{ friend.name }}</p>
+    		<p>Alias: {{ friend.alias }}</p>
+    		<p>Birthday: {{ friend.birthday }}</p>
+    		<p>Email: {{ friend.email }}</p>
+    	</div>
+    	<div>
+    		<h4>all of {{friend.alias}}'s friends</h4>
+    		{% for fren in their_friends %}
+    		<p><a href="/user/{{ fren.id }}"> {{ fren.name }} aka {{ fren.alias }} </a></p>
+    		{% endfor %}
+
+    	</div>
+    	<p><form action="/main">
+    			<button id="submit">Back to main</button>
+    		</form></p>
+    	<p><form action="logout">
+    			<button id="submit">Log out</button>
+    		</form></p>
+    </body>
+</html>
